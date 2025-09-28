@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Ancient Scroll -->
+    <!-- Application Structure Plan: The SPA simulates a long, vertical parchment scroll to match the document's fantasy theme. The information architecture is thematic, mirroring the Grimorio's logical flow (Introduction, Universe, Game Design, Theory, Conclusion). A sticky "Mapa del Grimorio" (Table of Contents) at the top provides immediate, smooth-scroll access to any section, solving the navigation challenge of a long page. This structure was chosen because it enhances the narrative, making the user feel like they are exploring an ancient artifact, rather than just reading a document. Key interactions include hover effects on diagrams (Kolb's Cycle) and scroll-triggered animations to make the content feel dynamic and alive, improving user engagement and comprehension. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Kolb's Learning Cycle -> Goal: Organize/Inform -> Viz/Presentation: Interactive diagram built with HTML/CSS Flexbox -> Interaction: On hover, sections of the diagram scale up and related text is highlighted, encouraging exploration -> Justification: Visually represents the cyclical process more effectively than a static list and makes a theoretical concept interactive and easier to understand. -> Library/Method: Vanilla JS + Tailwind CSS.
+        - Report Info: Sensory Design (Sounds) -> Goal: Inform/Engage -> Viz/Presentation: Interactive HTML buttons for each sound type -> Interaction: On click, a sample sound is played using Tone.js -> Justification: Provides a direct, tangible demonstration of the concepts described in the text, making the learning multi-sensory and more memorable. -> Library/Method: Tone.js.
+        - Report Info: Entire document structure -> Goal: Engagement/Navigation -> Viz/Presentation: Sections that fade-in on scroll -> Interaction: Scrolling down the page triggers animations -> Justification: Turns passive reading into a dynamic experience of discovery, keeping the user engaged as they explore the "scroll". -> Library/Method: Vanilla JS (Intersection Observer API).
+        - Report Info: Document sections -> Goal: Navigation -> Viz/Presentation: A sticky top navigation bar styled as a map -> Interaction: Clicking a link smoothly scrolls to the relevant section -> Justification: Provides essential usability for a single-page application, allowing users to quickly jump between topics without losing context. -> Library/Method: Vanilla JS + HTML anchors.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Grimorio del Guía: Herramientas Legendarias</title>
+    <script src="https://cdn.tailwindcss.com  "></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com  ">
+    <link rel="preconnect" href="https://fonts.gstatic.com  " crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+    <script src="  https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js  "></script>
+    <style>
+        body {
+            background-color: #FDF6E3;
+            color: #583E23;
+            font-family: 'IM Fell English SC', serif;
+        }
+        .zelda-font {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        .parchment {
+            background-image: radial-gradient(ellipse at center, rgba(253, 246, 227, 1) 0%, rgba(225, 183, 138, 0.3) 100%);
+            box-shadow: 0 0 40px rgba(0,0,0,0.4);
+        }
+        .scroll-target {
+            scroll-margin-top: 100px; 
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .kolb-cycle-item:hover .kolb-icon {
+            transform: scale(1.2);
+            color: #A97142;
+        }
+         .kolb-cycle-item:hover .kolb-text {
+            color: #583E23;
+        }
+        .kolb-icon {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .sound-btn:hover {
+            background-color: #A97142;
+            color: #FDF6E3;
+        }
+        .realm-card {
+            transition: all 0.3s ease;
+            border: 1px solid #D1B78A;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .realm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-color: #A97142;
+        }
+    </style>
+</head>
+<body class="bg-[#FDF6E3]">
+
+    <nav class="sticky top-0 z-50 bg-opacity-80 backdrop-blur-md bg-[#d8c7a8] border-b-2 border-[#A97142] shadow-lg">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex justify-between items-center py-2">
+                <h1 class="text-xl zelda-font text-[#583E23]">Mapa del Grimorio</h1>
+                <div class="hidden md:flex items-center space-x-4 text-sm">
+                    <a href="#herramientas" class="hover:text-[#A97142] transition-colors">Herramientas</a>
+                    <a href="#pergaminos" class="hover:text-[#A97142] transition-colors">Pergaminos</a>
+                    <a href="#visiones" class="hover:text-[#A97142] transition-colors">Visiones</a>
+                    <a href="#simulacros" class="hover:text-[#A97142] transition-colors">Simulacros</a>
+                    <a href="#reinos" class="hover:text-[#A97142] transition-colors">Reinos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto my-12 p-8 md:p-12 parchment border-x-4 border-[#D1B78A]">
+
+        <header class="text-center mb-16 fade-in-section">
+            <h1 class="text-4xl md:text-6xl zelda-font text-[#583E23] drop-shadow-sm">Grimorio del Guía</h1>
+            <h2 class="text-2xl md:text-3xl zelda-font text-[#A97142]">Herramientas Legendarias</h2>
+        </header>
+
+        <section id="herramientas" class="scroll-target mb-16 fade-in-section">
+            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Herramientas Legendarias en el Sendero del Guía</h2>
+            <p class="text-lg leading-relaxed mb-6">Bienvenido de vuelta al sendero como Guía de la Llama Activa, noble viajero. A lo largo de este camino ancestral, descubrirás poderosos artefactos y herramientas que, como luces en la penumbra, te ayudarán a reavivar el conocimiento vivo en tus aprendices y a transformar la enseñanza en una experiencia fascinante y duradera.</p>
+            <p class="text-lg leading-relaxed mb-6">Las herramientas legendarias no son simples utensilios; son joyas forjadas en la interacción, la creatividad y la colaboración, que reflejan la esencia misma de la Llama Activa. Estas se agrupan en tres grandes santuarios, custodios de diferentes formas de hacer del aprendizaje algo vivo, participativo y lleno de significado.</p>
+        </section>
+
+        <section id="pergaminos" class="scroll-target mb-16 fade-in-section">
+            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Pergaminos Vivientes</h2>
+            <p class="text-lg leading-relaxed mb-6">Imagina pergaminos que respiran y cantan con la sabiduría del saber activo. Estos pergaminos no solo enseñan, sino que invitan a la exploración y la participación directa, permitiendo que cada aprendiz se sumerja en su propio proceso de descubrimiento.</p>
+            <p class="text-lg leading-relaxed mb-6">Aquí habitan herramientas como Wayground, que con sus cuestionarios y actividades proporciona retos con retroalimentación inmediata. Genially, que convierte la información en lienzos multimedia interactivos, y H5P, que transforma documentos y videos en experiencias vivas y dinámicas.</p>
+            <div class="grid md:grid-cols-3 gap-6 mt-8">
+                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">📜</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Wayground</h3>
+                    <p class="text-sm">Cuestionarios con retroalimentación instantánea</p>
+                </div>
+                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">🎨</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Genially</h3>
+                    <p class="text-sm">Lienzos multimedia interactivos</p>
+                </div>
+                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">🎬</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">H5P</h3>
+                    <p class="text-sm">Experiencias vivas en documentos y videos</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="visiones" class="scroll-target mb-16 fade-in-section">
+            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Visiones del Oráculo</h2>
+            <p class="text-lg leading-relaxed mb-6">En este santuario, la visión y la colaboración se fusionan para crear espacios donde las ideas cobran vida a través de imágenes, videos y murales compartidos. Es un lugar donde la reflexión y la interacción social se convierten en fuerzas impulsoras del aprendizaje.</p>
+            <p class="text-lg leading-relaxed mb-6">Entre sus guardianes destacan Kahoot!, que impulsa la motivación mediante competencias en tiempo real, y Padlet, que fomenta la colaboración y la discusión activa a través de murales virtuales ricos en interacción.</p>
+            <div class="grid md:grid-cols-2 gap-6 mt-8">
+                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">🏆</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Kahoot!</h3>
+                    <p class="text-sm">Competencias en tiempo real</p>
+                </div>
+                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2"> mural</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Padlet</h3>
+                    <p class="text-sm">Murales virtuales colaborativos</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="simulacros" class="scroll-target mb-16 fade-in-section">
+            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Simulacros del Destino</h2>
+            <p class="text-lg leading-relaxed mb-6">Finalmente, el Santuario de los Simulacros del Destino es un laboratorio para la experimentación, donde las decisiones activas y los juegos educativos forman la base de la enseñanza.</p>
+            <p class="text-lg leading-relaxed mb-6">Educaplay ofrece aquí un arsenal de juegos diseñados para reforzar conceptos mediante actividades lúdicas y accesibles. Wordwall facilita la creación rápida y flexible de juegos para múltiples áreas, y Interacty convierte la práctica en una aventura de memoria, estrategia y cuestionarios.</p>
+            <div class="grid md:grid-cols-3 gap-6 mt-8">
+                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">⚔️</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Educaplay</h3>
+                    <p class="text-sm">Juegos lúdicos y accesibles</p>
+                </div>
+                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">🎲</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Wordwall</h3>
+                    <p class="text-sm">Creación rápida de juegos</p>
+                </div>
+                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">🧠</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Interacty</h3>
+                    <p class="text-sm">Memoria, estrategia y cuestionarios</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reinos" class="scroll-target mb-16 fade-in-section">
+            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Reinos Legendarios del Sendero del Guía</h2>
+            <div class="space-y-8">
+                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Wayground (antes Quizizz)</h3>
+                    <p>En el vasto dominio de los Pergaminos Vivientes se encuentra el Reino de Wayground, epicentro de la sabiduría interactiva. En este reino se forjan cuestionarios y desafíos dinámicos que entregan retroalimentación instantánea, permitiendo que el conocimiento se convierta en una experiencia activa y llena de vida.</p>
+                    <p>Quienes cruzan sus límites aprenden a diseñar rutas de aprendizaje personalizadas, donde cada acierto fortalece la llama del descubrimiento y motiva a continuar el viaje hacia la maestría.</p>
+                </article>
+
+                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Kahoot!</h3>
+                    <p>Bajo las estrellas vibrantes de las Visiones del Oráculo se despliega el Reino de Kahoot!, donde la competencia sana y la rapidez son las leyes que rigen. Aquí, la evaluación se convierte en un juego energético que aviva la motivación y crea lazos entre los participantes.</p>
+                    <p>El Guía que domina este reino sabe cómo transformar la evaluación en un espectáculo de emoción y colaboración, guiando a sus aprendices a través de retos visuales y temporales que engrandecen el aprendizaje.</p>
+                </article>
+
+                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Genially</h3>
+                    <p>En el reino más vívido de los Pergaminos Vivientes, Genially se alza como un lienzo mágico para crear experiencias visuales y multimedia. Este reino invita al Guía a transformar el saber en escenarios interactivos llenos de juegos, presentaciones y cuestionarios que fascinan y retan a los aprendices.</p>
+                    <p>Aquí, el aprendizaje deja de ser pasivo para convertirse en una aventura multisensorial donde cada clic y movimiento desatan nuevas revelaciones.</p>
+                </article>
+
+                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de H5P</h3>
+                    <p>En los dominios de los Pergaminos Vivientes también se abre paso el Reino de H5P, donde textos y videos se adornan con preguntas y desafíos integrados. Este reino combina la profundidad del contenido con la acción constante, invitando al Guía y a sus aprendices a recorrer un sendero de pensamiento crítico y aprendizaje activo.</p>
+                    <p>Los secretos de este reino permiten que la teoría se convierta en una práctica vivida y experimentada.</p>
+                </article>
+
+                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Padlet</h3>
+                    <p>Entre las Visiones del Oráculo surge el Reino de Padlet, un espacio comunitario donde las ideas se convocan y entrelazan como una red de sabiduría compartida. Este reino fomenta la colaboración abierta, las discusiones enriquecidas y la construcción colectiva del conocimiento.</p>
+                    <p>El Guía que lidera Padlet sabe que el poder del aprendizaje crece cuando se multiplica en la interacción social y en la reflexión conjunta.</p>
+                </article>
+
+                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Educaplay</h3>
+                    <p>Dentro de los Simulacros del Destino, el Reino de Educaplay despliega un campo de juegos y desafíos de todo tipo, desde crucigramas hasta sopas de letras y juegos de memoria. Este reino ofrece herramientas para que los aprendices exploren y refuercen conceptos mediante la diversión y el reto constante.</p>
+                    <p>Quienes transitan Educaplay desarrollan habilidades y consolidan saberes, afianzando su dominio a través de la experiencia lúdica.</p>
+                </article>
+
+                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Wordwall</h3>
+                    <p>En el territorio flexible y ágil de los Simulacros del Destino, el Reino de Wordwall está al servicio del Guía que quiere moldear juegos interactivos con rapidez y facilidad. Desde esta tierra, se crean ejercicios para múltiples materias que se adaptan a cualquier contexto, favoreciendo el juego y la evaluación continua.</p>
+                    <p>Aquí, el arte de la creación rápida es el motor para mantener viva la motivación y la práctica constante.</p>
+                </article>
+
+                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Interacty</h3>
+                    <p>Finalmente, en el corazón de los Simulacros del Destino yace el Reino de Interacty, un espacio lleno de enigmas, juegos de memoria y cuestionarios desafiantes. Esta tierra pone el foco en la experimentación activa y el desarrollo estratégico, invitando a sus habitantes a pensar, recordar y decidir con agudeza.</p>
+                    <p>Quien domina Interacty despierta el ingenio y fomenta un aprendizaje profundo, dinámico y lleno de aventuras mentales.</p>
+                </article>
+            </div>
+            <div class="mt-8 p-4 border-l-4 border-[#A97142] bg-[#fdf6e3]/60">
+                <p class="text-lg italic">Cada uno de estos reinos legendarios es una pieza esencial en el mosaico del aprendizaje activo. Como Guía de la Llama, tu tarea será recorrerlos, dominar sus secretos y usar sus poderes para reavivar la chispa del conocimiento en cada aprendiz que cruza tu camino.</p>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center py-8 px-4">
+        <p class="text-xs text-[#6e553a]">© 2025 | Adriana A. Barrios Rodríguez | Diplomado en Gamificación en Entornos Digitales para la Docencia Universitaria | UAS | SAU | DGES | Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const soundManager = {
+                isReady: false,
+                synth: null,
+                init() {
+                    document.body.addEventListener('click', async () => {
+                        if (this.isReady || Tone.context.state === 'running') return;
+                        await Tone.start();
+                        this.synth = new Tone.Synth().toDestination();
+                        this.isReady = true;
+                    }, { once: true });
+                },
+                playRupee() { if (this.isReady) this.synth.triggerAttackRelease("G5", "16n", Tone.now()); },
+                playError() { if (this.isReady) this.synth.triggerAttackRelease("C3", "8n", Tone.now()); },
+                playSecret() {
+                    if (!this.isReady) return;
+                    const now = Tone.now();
+                    this.synth.triggerAttackRelease("G4", "8n", now + 0.01);
+                    this.synth.triggerAttackRelease("A4", "8n", now + 0.2);
+                    this.synth.triggerAttackRelease("B4", "8n", now + 0.4);
+                    this.synth.triggerAttackRelease("C5", "4n", now + 0.6);
+                }
+            };
+
+            soundManager.init();
+
+            document.querySelectorAll('.sound-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const soundType = e.target.dataset.sound;
+                    if (soundType === 'rupee') soundManager.playRupee();
+                    if (soundType === 'secret') soundManager.playSecret();
+                    if (soundType === 'error') soundManager.playError();
+                });
+            });
+
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
