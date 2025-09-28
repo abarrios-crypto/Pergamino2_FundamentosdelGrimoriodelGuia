@@ -12,7 +12,7 @@
         - Report Info: Document sections -> Goal: Navigation -> Viz/Presentation: A sticky top navigation bar styled as a map -> Interaction: Clicking a link smoothly scrolls to the relevant section -> Justification: Provides essential usability for a single-page application, allowing users to quickly jump between topics without losing context. -> Library/Method: Vanilla JS + HTML anchors.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <title>Grimorio del Guía: Herramientas Legendarias</title>
+    <title>Grimorio del Guía: Criterios Pedagógicos</title>
     <script src="https://cdn.tailwindcss.com  "></script>
     <link rel="preconnect" href="https://fonts.googleapis.com  ">
     <link rel="preconnect" href="https://fonts.gstatic.com  " crossorigin>
@@ -57,15 +57,25 @@
             background-color: #A97142;
             color: #FDF6E3;
         }
-        .realm-card {
+        .criterion-card {
             transition: all 0.3s ease;
             border: 1px solid #D1B78A;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .realm-card:hover {
+        .criterion-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             border-color: #A97142;
+        }
+        .pillar-card {
+            transition: all 0.3s ease;
+            border: 1px solid #A97142;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-color: #583E23;
         }
     </style>
 </head>
@@ -76,11 +86,10 @@
             <div class="flex justify-between items-center py-2">
                 <h1 class="text-xl zelda-font text-[#583E23]">Mapa del Grimorio</h1>
                 <div class="hidden md:flex items-center space-x-4 text-sm">
-                    <a href="#herramientas" class="hover:text-[#A97142] transition-colors">Herramientas</a>
-                    <a href="#pergaminos" class="hover:text-[#A97142] transition-colors">Pergaminos</a>
-                    <a href="#visiones" class="hover:text-[#A97142] transition-colors">Visiones</a>
-                    <a href="#simulacros" class="hover:text-[#A97142] transition-colors">Simulacros</a>
-                    <a href="#reinos" class="hover:text-[#A97142] transition-colors">Reinos</a>
+                    <a href="#tema1" class="hover:text-[#A97142] transition-colors">Criterios pedagógicos</a>
+                    <a href="#tema2" class="hover:text-[#A97142] transition-colors">Estructuración</a>
+                    <a href="#tema3" class="hover:text-[#A97142] transition-colors">Intro Diseño y Evaluación </a>
+                    <a href="#conclusion" class="hover:text-[#A97142] transition-colors">Conclusión</a>
                 </div>
             </div>
         </div>
@@ -90,132 +99,369 @@
 
         <header class="text-center mb-16 fade-in-section">
             <h1 class="text-4xl md:text-6xl zelda-font text-[#583E23] drop-shadow-sm">Grimorio del Guía</h1>
-            <h2 class="text-2xl md:text-3xl zelda-font text-[#A97142]">Herramientas Legendarias</h2>
+            <h2 class="text-2xl md:text-3xl zelda-font text-[#A97142]">Criterios Pedagógicos</h2>
+            <p class="text-lg mt-4">Construyendo aventuras memorables a través de la narrativa, el desafío y la participación activa</p>
         </header>
 
-        <section id="herramientas" class="scroll-target mb-16 fade-in-section">
-            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Herramientas Legendarias en el Sendero del Guía</h2>
-            <p class="text-lg leading-relaxed mb-6">Bienvenido de vuelta al sendero como Guía de la Llama Activa, noble viajero. A lo largo de este camino ancestral, descubrirás poderosos artefactos y herramientas que, como luces en la penumbra, te ayudarán a reavivar el conocimiento vivo en tus aprendices y a transformar la enseñanza en una experiencia fascinante y duradera.</p>
-            <p class="text-lg leading-relaxed mb-6">Las herramientas legendarias no son simples utensilios; son joyas forjadas en la interacción, la creatividad y la colaboración, que reflejan la esencia misma de la Llama Activa. Estas se agrupan en tres grandes santuarios, custodios de diferentes formas de hacer del aprendizaje algo vivo, participativo y lleno de significado.</p>
-        </section>
-
-        <section id="pergaminos" class="scroll-target mb-16 fade-in-section">
-            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Pergaminos Vivientes</h2>
-            <p class="text-lg leading-relaxed mb-6">Imagina pergaminos que respiran y cantan con la sabiduría del saber activo. Estos pergaminos no solo enseñan, sino que invitan a la exploración y la participación directa, permitiendo que cada aprendiz se sumerja en su propio proceso de descubrimiento.</p>
-            <p class="text-lg leading-relaxed mb-6">Aquí habitan herramientas como Wayground, que con sus cuestionarios y actividades proporciona retos con retroalimentación inmediata. Genially, que convierte la información en lienzos multimedia interactivos, y H5P, que transforma documentos y videos en experiencias vivas y dinámicas.</p>
-            <div class="grid md:grid-cols-3 gap-6 mt-8">
-                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
-                    <div class="text-4xl mb-2">📜</div>
-                    <h3 class="text-xl zelda-font text-[#583E23]">Wayground</h3>
-                    <p class="text-sm">Cuestionarios con retroalimentación instantánea</p>
-                </div>
-                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
-                    <div class="text-4xl mb-2">🎨</div>
-                    <h3 class="text-xl zelda-font text-[#583E23]">Genially</h3>
-                    <p class="text-sm">Lienzos multimedia interactivos</p>
-                </div>
-                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
-                    <div class="text-4xl mb-2">🎬</div>
-                    <h3 class="text-xl zelda-font text-[#583E23]">H5P</h3>
-                    <p class="text-sm">Experiencias vivas en documentos y videos</p>
-                </div>
+        <section id="tema1" class="scroll-target mb-16 fade-in-section">
+            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Tema 1: Criterios Pedagógicos para Diseño de Experiencias Gamificadas</h2>
+            
+            <div class="mb-12 p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">El Mapa del Arquitecto</h3>
+                <p>¡Hola, arquitectos del aprendizaje! Antes de construir nuestra experiencia gamificada, necesitamos el plano maestro. No se trata solo de añadir puntos o insignias; se trata de diseñar un ecosistema de aprendizaje con una base pedagógica sólida.</p>
+                <p class="mt-3">Gamificar es más que usar juegos en clase; es <strong>transformar la propia clase en un juego</strong>, planteando el proceso de enseñanza-aprendizaje como lo haría un diseñador de juegos. Para que esta transformación sea verdaderamente educativa, debemos apoyarnos en criterios pedagógicos fundamentales que aseguran que la experiencia tenga un propósito claro y sea memorable para el estudiante.</p>
             </div>
-        </section>
 
-        <section id="visiones" class="scroll-target mb-16 fade-in-section">
-            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Visiones del Oráculo</h2>
-            <p class="text-lg leading-relaxed mb-6">En este santuario, la visión y la colaboración se fusionan para crear espacios donde las ideas cobran vida a través de imágenes, videos y murales compartidos. Es un lugar donde la reflexión y la interacción social se convierten en fuerzas impulsoras del aprendizaje.</p>
-            <p class="text-lg leading-relaxed mb-6">Entre sus guardianes destacan Kahoot!, que impulsa la motivación mediante competencias en tiempo real, y Padlet, que fomenta la colaboración y la discusión activa a través de murales virtuales ricos en interacción.</p>
-            <div class="grid md:grid-cols-2 gap-6 mt-8">
-                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
-                    <div class="text-4xl mb-2">🏆</div>
-                    <h3 class="text-xl zelda-font text-[#583E23]">Kahoot!</h3>
-                    <p class="text-sm">Competencias en tiempo real</p>
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <div class="criterion-card bg-[#fdf6e3]/50 p-4 rounded-lg">
+                    <div class="text-4xl mb-2">📖</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">La Narrativa Poderosa</h3>
+                    <p class="text-sm">El alma de la aventura</p>
                 </div>
-                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
-                    <div class="text-4xl mb-2"> mural</div>
-                    <h3 class="text-xl zelda-font text-[#583E23]">Padlet</h3>
-                    <p class="text-sm">Murales virtuales colaborativos</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="simulacros" class="scroll-target mb-16 fade-in-section">
-            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Simulacros del Destino</h2>
-            <p class="text-lg leading-relaxed mb-6">Finalmente, el Santuario de los Simulacros del Destino es un laboratorio para la experimentación, donde las decisiones activas y los juegos educativos forman la base de la enseñanza.</p>
-            <p class="text-lg leading-relaxed mb-6">Educaplay ofrece aquí un arsenal de juegos diseñados para reforzar conceptos mediante actividades lúdicas y accesibles. Wordwall facilita la creación rápida y flexible de juegos para múltiples áreas, y Interacty convierte la práctica en una aventura de memoria, estrategia y cuestionarios.</p>
-            <div class="grid md:grid-cols-3 gap-6 mt-8">
-                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                <div class="criterion-card bg-[#fdf6e3]/50 p-4 rounded-lg">
                     <div class="text-4xl mb-2">⚔️</div>
-                    <h3 class="text-xl zelda-font text-[#583E23]">Educaplay</h3>
-                    <p class="text-sm">Juegos lúdicos y accesibles</p>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Retos Desafiantes</h3>
+                    <p class="text-sm">El motor del progreso</p>
                 </div>
-                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
-                    <div class="text-4xl mb-2">🎲</div>
-                    <h3 class="text-xl zelda-font text-[#583E23]">Wordwall</h3>
-                    <p class="text-sm">Creación rápida de juegos</p>
+                <div class="criterion-card bg-[#fdf6e3]/50 p-4 rounded-lg">
+                    <div class="text-4xl mb-2">👤</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Estudiante Activo</h3>
+                    <p class="text-sm">El poder de decidir</p>
                 </div>
-                <div class="realm-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
-                    <div class="text-4xl mb-2">🧠</div>
-                    <h3 class="text-xl zelda-font text-[#583E23]">Interacty</h3>
-                    <p class="text-sm">Memoria, estrategia y cuestionarios</p>
+                <div class="criterion-card bg-[#fdf6e3]/50 p-4 rounded-lg">
+                    <div class="text-4xl mb-2">📊</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Feedback Visible</h3>
+                    <p class="text-sm">El espejo del esfuerzo</p>
                 </div>
+            </div>
+
+            <article class="mb-12 p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">La Narrativa: El Alma de la Aventura</h3>
+                <p>Toda gran experiencia de aprendizaje comienza con una gran historia. La narrativa no es un simple adorno; es el <strong>hilo conductor que envuelve cualquier contenido educativo en un proceso excitante y placentero</strong>. Es el "porqué" de cada reto y cada misión.</p>
+                <p class="mt-3"><strong>Función pedagógica:</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li>Genera un contexto significativo: Una temática atractiva, basada en los gustos e intereses del alumnado, es fundamental para cautivarlos desde el inicio.</li>
+                    <li>Conecta con las emociones: Una buena historia transmite emociones y sensaciones, creando una conexión personal y memorable con el aprendizaje.</li>
+                    <li>Sitúa al estudiante como protagonista: A través de la historia, los alumnos dejan de ser espectadores pasivos y se convierten en los héroes de su propia aventura de aprendizaje.</li>
+                </ul>
+                <p class="mt-3 italic">Sin una narrativa bien integrada, la gamificación corre el riesgo de ser solo una colección de tareas con recompensas, perdiendo su potencial transformador.</p>
+            </article>
+
+            <article class="mb-12 p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">El Desafío Equilibrado: El Motor del Progreso</h3>
+                <p>El corazón de una experiencia gamificada reside en los retos que plantea. Estos desafíos deben estar <strong>cuidadosamente diseñados para equilibrar la dificultad con la habilidad del estudiante</strong>, manteniéndolo en un "estado de flujo" (<em>flow</em>), donde está completamente inmerso y concentrado.</p>
+                <p class="mt-3"><strong>Características de los retos:</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li>Basados en el currículo: Los objetivos y habilidades a dominar deben estar fundamentados en el currículo oficial.</li>
+                    <li>Progresivos y adaptables: Es clave proponer desafíos que vayan <strong>de lo simple a lo complejo</strong>, permitiendo que el alumnado tenga éxito al principio.</li>
+                    <li>Abiertos y flexibles: Las tareas deben tener <strong>múltiples soluciones posibles</strong> para fomentar la experimentación y la creatividad.</li>
+                </ul>
+                <p class="mt-3 italic">Un reto bien diseñado saca al estudiante de su zona de confort sin causarle frustración, promoviendo la superación personal y un aprendizaje significativo.</p>
+            </article>
+
+            <article class="mb-12 p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">El Estudiante Protagonista: El Poder de Decidir</h3>
+                <p>Las metodologías activas sitúan al estudiante en el centro del proceso, y la gamificación es un claro ejemplo de ello. Para que la experiencia sea pedagógicamente rica, debemos <strong>ceder el control y empoderar al alumnado</strong>, transformando su rol de receptor pasivo a agente activo de su formación.</p>
+                <p class="mt-3"><strong>¿Cómo fomentamos un rol activo?</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li>Promoviendo la autonomía: Los estudiantes deben poder <strong>regular su propio aprendizaje y tomar decisiones</strong>.</li>
+                    <li>Fomentando la interacción social: Diseñar tareas que requieran trabajar en <strong>grupos heterogéneos</strong> promueve la cohesión.</li>
+                    <li>Personalizando la experiencia: Permitir que los estudiantes elijan y personalicen sus <strong>avatares</strong> les ayuda a vincularse con el mundo mágico del juego.</li>
+                </ul>
+                <p class="mt-3 italic">Cuando los estudiantes se sienten protagonistas y tienen libertad para tomar sus propias decisiones, su compromiso y el sentido de propiedad sobre su aprendizaje se incrementan exponencialmente.</p>
+            </article>
+
+            <article class="mb-12 p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">El Espejo del Esfuerzo: Retroalimentación y Logros Visibles</h3>
+                <p>Para que un estudiante persista en un desafío, necesita saber si está avanzando. Un sistema de <strong>retroalimentación constante e inmediata</strong> es crucial, ya que le permite al estudiante saber cómo está haciendo las cosas y cómo puede mejorar.</p>
+                <p class="mt-3"><strong>Elementos clave:</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li>Retroalimentación inmediata: Es imprescindible que el estudiante reciba información instantánea sobre su desempeño.</li>
+                    <li>Visibilidad del progreso: Elementos como los <strong>puntos, niveles y tablas de clasificación</strong> (la triada PBL).</li>
+                    <li>Reconocimiento de logros: Las <strong>insignias, escudos o premios</strong> son acreditaciones que reconocen el esfuerzo y el trabajo.</li>
+                </ul>
+                <p class="mt-3 italic">Hacer visible el progreso y reconocer el esfuerzo transforma el aprendizaje en un viaje gratificante y tangible, donde cada paso adelante es celebrado.</p>
+            </article>
+
+            <div class="mb-12 p-6 border-l-4 border-[#A97142] bg-[#fdf6e3]/60">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Construyendo la Aventura Educativa</h3>
+                <p>Estos criterios pedagógicos no son elementos aislados, sino que se entrelazan para dar vida a una experiencia de aprendizaje sólida y efectiva:</p>
+                <ul class="list-disc pl-6 mt-3">
+                    <li>La <strong>Narrativa Poderosa</strong> le da un propósito y un alma a la aventura.</li>
+                    <li>Los <strong>Retos Desafiantes</strong> ofrecen el camino y mantienen la llama del interés encendida.</li>
+                    <li>El <strong>Estudiante como Agente Activo</strong> le otorga el control y la capacidad de decisión.</li>
+                    <li>El <strong>Feedback y el Progreso Visible</strong> le muestran el fruto de su esfuerzo y lo animan a seguir.</li>
+                </ul>
+                <p class="mt-3">Al integrar estos pilares en nuestro diseño, trascendemos el simple uso de juegos y comenzamos a <strong>construir verdaderas aventuras de aprendizaje</strong>: significativas, participativas y transformadoras.</p>
+            </div>
+
+            <div class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Modalidades de Gamificación</h3>
+                <div class="grid md:grid-cols-3 gap-4 mt-4">
+                    <div class="border border-[#D1B78A] p-4 rounded-lg">
+                        <div class="text-2xl mb-2">🔑</div>
+                        <h4 class="font-bold">Microgamificación</h4>
+                        <p class="text-sm">Un recurso o tema suelto</p>
+                    </div>
+                    <div class="border border-[#D1B78A] p-4 rounded-lg">
+                        <div class="text-2xl mb-2">🗺️</div>
+                        <h4 class="font-bold">Unidad Temática</h4>
+                        <p class="text-sm">Una aventura completa</p>
+                    </div>
+                    <div class="border border-[#D1B78A] p-4 rounded-lg">
+                        <div class="text-2xl mb-2">🏆</div>
+                        <h4 class="font-bold">Curso Completo</h4>
+                        <p class="text-sm">La saga épica</p>
+                    </div>
+                </div>
+                <p class="mt-4 italic">No hay un único camino correcto, ¡solo el que mejor se adapta a ti y a tus estudiantes! Empieza con un Recurso, avanza con una Unidad o lánzate con el Curso Completo.</p>
             </div>
         </section>
 
-        <section id="reinos" class="scroll-target mb-16 fade-in-section">
-            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Reinos Legendarios del Sendero del Guía</h2>
-            <div class="space-y-8">
-                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
-                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Wayground (antes Quizizz)</h3>
-                    <p>En el vasto dominio de los Pergaminos Vivientes se encuentra el Reino de Wayground, epicentro de la sabiduría interactiva. En este reino se forjan cuestionarios y desafíos dinámicos que entregan retroalimentación instantánea, permitiendo que el conocimiento se convierta en una experiencia activa y llena de vida.</p>
-                    <p>Quienes cruzan sus límites aprenden a diseñar rutas de aprendizaje personalizadas, donde cada acierto fortalece la llama del descubrimiento y motiva a continuar el viaje hacia la maestría.</p>
-                </article>
-
-                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
-                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Kahoot!</h3>
-                    <p>Bajo las estrellas vibrantes de las Visiones del Oráculo se despliega el Reino de Kahoot!, donde la competencia sana y la rapidez son las leyes que rigen. Aquí, la evaluación se convierte en un juego energético que aviva la motivación y crea lazos entre los participantes.</p>
-                    <p>El Guía que domina este reino sabe cómo transformar la evaluación en un espectáculo de emoción y colaboración, guiando a sus aprendices a través de retos visuales y temporales que engrandecen el aprendizaje.</p>
-                </article>
-
-                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
-                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Genially</h3>
-                    <p>En el reino más vívido de los Pergaminos Vivientes, Genially se alza como un lienzo mágico para crear experiencias visuales y multimedia. Este reino invita al Guía a transformar el saber en escenarios interactivos llenos de juegos, presentaciones y cuestionarios que fascinan y retan a los aprendices.</p>
-                    <p>Aquí, el aprendizaje deja de ser pasivo para convertirse en una aventura multisensorial donde cada clic y movimiento desatan nuevas revelaciones.</p>
-                </article>
-
-                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
-                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de H5P</h3>
-                    <p>En los dominios de los Pergaminos Vivientes también se abre paso el Reino de H5P, donde textos y videos se adornan con preguntas y desafíos integrados. Este reino combina la profundidad del contenido con la acción constante, invitando al Guía y a sus aprendices a recorrer un sendero de pensamiento crítico y aprendizaje activo.</p>
-                    <p>Los secretos de este reino permiten que la teoría se convierta en una práctica vivida y experimentada.</p>
-                </article>
-
-                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
-                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Padlet</h3>
-                    <p>Entre las Visiones del Oráculo surge el Reino de Padlet, un espacio comunitario donde las ideas se convocan y entrelazan como una red de sabiduría compartida. Este reino fomenta la colaboración abierta, las discusiones enriquecidas y la construcción colectiva del conocimiento.</p>
-                    <p>El Guía que lidera Padlet sabe que el poder del aprendizaje crece cuando se multiplica en la interacción social y en la reflexión conjunta.</p>
-                </article>
-
-                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
-                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Educaplay</h3>
-                    <p>Dentro de los Simulacros del Destino, el Reino de Educaplay despliega un campo de juegos y desafíos de todo tipo, desde crucigramas hasta sopas de letras y juegos de memoria. Este reino ofrece herramientas para que los aprendices exploren y refuercen conceptos mediante la diversión y el reto constante.</p>
-                    <p>Quienes transitan Educaplay desarrollan habilidades y consolidan saberes, afianzando su dominio a través de la experiencia lúdica.</p>
-                </article>
-
-                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
-                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Wordwall</h3>
-                    <p>En el territorio flexible y ágil de los Simulacros del Destino, el Reino de Wordwall está al servicio del Guía que quiere moldear juegos interactivos con rapidez y facilidad. Desde esta tierra, se crean ejercicios para múltiples materias que se adaptan a cualquier contexto, favoreciendo el juego y la evaluación continua.</p>
-                    <p>Aquí, el arte de la creación rápida es el motor para mantener viva la motivación y la práctica constante.</p>
-                </article>
-
-                <article class="p-6 border-2 border-[#D1B78A] rounded-lg bg-[#fdf6e3]/30">
-                    <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Reino de Interacty</h3>
-                    <p>Finalmente, en el corazón de los Simulacros del Destino yace el Reino de Interacty, un espacio lleno de enigmas, juegos de memoria y cuestionarios desafiantes. Esta tierra pone el foco en la experimentación activa y el desarrollo estratégico, invitando a sus habitantes a pensar, recordar y decidir con agudeza.</p>
-                    <p>Quien domina Interacty despierta el ingenio y fomenta un aprendizaje profundo, dinámico y lleno de aventuras mentales.</p>
-                </article>
+        <section id="tema2" class="scroll-target mb-16 fade-in-section">
+            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Tema 2: Consideraciones para la Estructuración de Actividades Gamificadas</h2>
+            
+            <div class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">El Inicio del Viaje</h3>
+                <p>¡Hola, futuros arquitectos de experiencias! Antes de lanzarnos a diseñar nuestra gran aventura gamificada, debemos trazar el mapa.</p>
+                <p class="mt-3">Y todo buen mapa se sostiene sobre tres pilares fundamentales que aseguran que el viaje no solo sea divertido, sino que nos lleve a un destino claro: el aprendizaje significativo.</p>
+                <p class="mt-3">Estos tres pilares son nuestra receta secreta:</p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li><strong>Coherencia:</strong> La brújula que nos mantiene en el rumbo correcto.</li>
+                    <li><strong>Inclusión:</strong> El mapa que asegura que nadie se quede atrás.</li>
+                    <li><strong>Motivación:</strong> El motor que impulsa nuestra expedición.</li>
+                </ul>
             </div>
-            <div class="mt-8 p-4 border-l-4 border-[#A97142] bg-[#fdf6e3]/60">
-                <p class="text-lg italic">Cada uno de estos reinos legendarios es una pieza esencial en el mosaico del aprendizaje activo. Como Guía de la Llama, tu tarea será recorrerlos, dominar sus secretos y usar sus poderes para reavivar la chispa del conocimiento en cada aprendiz que cruza tu camino.</p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="pillar-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">🧭</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Coherencia</h3>
+                    <p class="text-sm">La brújula de nuestra aventura</p>
+                </div>
+                <div class="pillar-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">👥</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Inclusión</h3>
+                    <p class="text-sm">Un mapa para cada viajero</p>
+                </div>
+                <div class="pillar-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">🔥</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Motivación</h3>
+                    <p class="text-sm">El motor que impulsa el viaje</p>
+                </div>
+            </div>
+
+            <article class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Coherencia: La Brújula de Nuestra Aventura</h3>
+                <p>Imagina una historia donde el héroe quiere salvar la galaxia, pero dedica la mitad del tiempo a aprender a tejer. ¡No tendría sentido!</p>
+                <p class="mt-3">En la gamificación, la coherencia es nuestra brújula: asegura que cada elemento —la narrativa, los desafíos y las recompensas— apunte directamente a nuestros objetivos de aprendizaje.</p>
+                <p class="mt-3"><strong>¿Por qué es crucial?</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li><strong>Propósito claro:</strong> La narrativa no es un simple adorno; es el hilo conductor que da sentido a la experiencia.</li>
+                    <li><strong>Evita la distracción:</strong> Un diseño coherente refuerza el aprendizaje en lugar de desviarlo.</li>
+                    <li><strong>Aprendizaje con intención:</strong> Los retos deben basarse en contenidos curriculares concretos.</li>
+                </ul>
+                <p class="mt-3 italic">En resumen, la coherencia transforma un conjunto de actividades divertidas en una experiencia de aprendizaje unificada y memorable.</p>
+            </article>
+
+            <article class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Inclusión: Un Mapa para Cada Viajero</h3>
+                <p>En nuestra aventura, no hay pasajeros de segunda clase. La inclusión garantiza que todos los estudiantes, sin importar sus habilidades o contexto, tengan un mapa que puedan seguir y un camino hacia el éxito.</p>
+                <p class="mt-3"><strong>¿Cómo lo logramos?</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li><strong>Tareas flexibles:</strong> múltiples soluciones, posibilidad de reintento, ensayo-error como parte del aprendizaje.</li>
+                    <li><strong>Diseño Universal para el Aprendizaje (DUA):</strong> múltiples formas de representación, expresión e implicación.</li>
+                    <li><strong>Progreso individualizado:</strong> desafíos de menor a mayor complejidad, respetando ritmos diferentes.</li>
+                    <li><strong>Colaboración sobre competición:</strong> grupos heterogéneos para promover ayuda mutua y cohesión.</li>
+                </ul>
+                <p class="mt-3 italic">Una experiencia inclusiva no solo es justa, sino que enriquece el aprendizaje de todos y convierte la diversidad en fortaleza.</p>
+            </article>
+
+            <article class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">Motivación: El Motor que Impulsa el Viaje</h3>
+                <p>Podemos tener el mejor mapa y la brújula más precisa, pero sin combustible, nuestro vehículo no se moverá.</p>
+                <p class="mt-3">La motivación mantiene a los estudiantes curiosos, comprometidos y con ganas de llegar hasta el final.</p>
+                <p class="mt-3"><strong>¿Cómo encendemos la llama?</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li><strong>Más allá de las recompensas:</strong> puntos, insignias y clasificaciones pueden ser un impulso inicial, pero debemos cultivar la motivación intrínseca.</li>
+                    <li><strong>Teoría de la Autodeterminación:</strong> satisfacer tres necesidades psicológicas básicas:
+                        <ul class="list-circle pl-6 mt-1">
+                            <li><strong>Autonomía:</strong> libertad para tomar decisiones.</li>
+                            <li><strong>Competencia:</strong> retos equilibrados que refuercen confianza.</li>
+                            <li><strong>Relación:</strong> conexión social y pertenencia.</li>
+                        </ul>
+                    </li>
+                    <li><strong>El poder de la narrativa:</strong> una historia inmersiva enciende la pasión y el propósito.</li>
+                </ul>
+                <p class="mt-3 italic">La motivación es una llama que debemos alimentar constantemente con significado, autonomía y conexión humana.</p>
+            </article>
+
+            <div class="mb-12 p-6 border-l-4 border-[#A97142] bg-[#fdf6e3]/60">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">El Combustible de la Aventura</h3>
+                <p>Ya conocemos los grandes pilares de nuestra aventura (Coherencia, Inclusión y Motivación). Ahora, vamos a adentrarnos en la sala de máquinas: ¿cómo encendemos esa llama de la motivación en el día a día, especialmente al principio del viaje?</p>
+                <p class="mt-3">Aquí es donde entra en juego la motivación extrínseca: un conjunto de estímulos externos que actúan como el combustible inicial para poner en marcha a nuestros estudiantes.</p>
+                <p class="mt-3">La gestionamos a través de tres elementos clave, nuestra "tripleta" de arranque:</p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li><strong>Recompensas Visibles:</strong> el tesoro que se busca.</li>
+                    <li><strong>Progresión Clara:</strong> el mapa que marca el camino.</li>
+                    <li><strong>Retos Ajustados:</strong> la montaña que se puede escalar.</li>
+                </ul>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="criterion-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">💎</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Recompensas Visibles</h3>
+                    <p class="text-sm">El tesoro del viajero</p>
+                </div>
+                <div class="criterion-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">🗺️</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Progresión Clara</h3>
+                    <p class="text-sm">El mapa de la aventura</p>
+                </div>
+                <div class="criterion-card bg-[#fdf6e3]/50 p-4 rounded-lg text-center">
+                    <div class="text-4xl mb-2">⛰️</div>
+                    <h3 class="text-xl zelda-font text-[#583E23]">Retos Ajustados</h3>
+                    <p class="text-sm">La montaña a escalar</p>
+                </div>
+            </div>
+
+            <div class="mb-12 p-6 border-l-4 border-[#A97142] bg-[#fdf6e3]/60">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">La Sinergia del Viaje</h3>
+                <p>Los pilares y la tripleta no funcionan de manera aislada:</p>
+                <ul class="list-disc pl-6 mt-3">
+                    <li>La <strong>Coherencia</strong> da propósito y rumbo.</li>
+                    <li>La <strong>Inclusión</strong> abre caminos a todos.</li>
+                    <li>La <strong>Motivación</strong> enciende la llama.</li>
+                    <li>Las <strong>Recompensas Visibles</strong> refuerzan el inicio.</li>
+                    <li>La <strong>Progresión Clara</strong> traza el sendero.</li>
+                    <li>Los <strong>Retos Ajustados</strong> mantienen el flow.</li>
+                </ul>
+                <p class="mt-3">Unidos, diseñamos experiencias transformadoras: divertidas, inclusivas y significativas.</p>
+            </div>
+        </section>
+
+        <section id="tema3" class="scroll-target mb-16 fade-in-section">
+            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Tema 3: Introducción al Diseño y Evaluación de Experiencias Gamificadas</h2>
+            
+            <div class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">De Jugador a Arquitecto de Aventuras</h3>
+                <p>Ahora que conocemos los "qué" y los "porqué", es momento de adentrarnos en el "cómo".</p>
+                <p class="mt-3">Diseñar una experiencia gamificada es mucho más que usar juegos en clase; significa transformar la propia clase en un juego, planteando el proceso como lo haría un diseñador de videojuegos. Es un desafío, sí, pero puede generar experiencias memorables.</p>
+                <p class="mt-3">No se trata de añadir puntos a algo aburrido y esperar que la magia ocurra. Requiere un diseño detallado, coherente e intencional. Para ello, necesitamos un plano maestro que nos guíe en la construcción.</p>
+            </div>
+
+            <article class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">La Pirámide del Diseño: Dinámicas, Mecánicas y Componentes</h3>
+                <p>Para que nuestro diseño sea sólido, podemos basarnos en un modelo de tres niveles jerárquicos que funcionan como cimientos:</p>
+                <div class="mt-4">
+                    <div class="mb-6 p-4 border border-[#D1B78A] rounded-lg">
+                        <h4 class="font-bold text-lg">Dinámicas (el nivel más abstracto)</h4>
+                        <p class="mt-2">Son los deseos y motivaciones humanas que queremos despertar.</p>
+                        <ul class="list-disc pl-6 mt-2">
+                            <li><strong>Narrativa:</strong> historia que da sentido.</li>
+                            <li><strong>Progresión:</strong> sensación de avance.</li>
+                            <li><strong>Relaciones sociales:</strong> necesidad de conectar.</li>
+                            <li><strong>Emociones:</strong> curiosidad, sorpresa, competitividad.</li>
+                        </ul>
+                    </div>
+                    <div class="mb-6 p-4 border border-[#D1B78A] rounded-lg">
+                        <h4 class="font-bold text-lg">Mecánicas (las reglas del juego)</h4>
+                        <p class="mt-2">Procesos que hacen avanzar la experiencia y activan las dinámicas.</p>
+                        <ul class="list-disc pl-6 mt-2">
+                            <li><strong>Retos y misiones.</strong></li>
+                            <li><strong>Competencia y cooperación.</strong></li>
+                            <li><strong>Retroalimentación (feedback).</strong></li>
+                            <li><strong>Puntos y niveles.</strong></li>
+                        </ul>
+                    </div>
+                    <div class="p-4 border border-[#D1B78A] rounded-lg">
+                        <h4 class="font-bold text-lg">Componentes (lo más concreto)</h4>
+                        <p class="mt-2">Son los elementos tangibles con los que interactúan los jugadores.</p>
+                        <ul class="list-disc pl-6 mt-2">
+                            <li><strong>Avatares, insignias, trofeos.</strong></li>
+                            <li><strong>Puntos, niveles, clasificaciones.</strong></li>
+                            <li><strong>Recompensas y objetos virtuales.</strong></li>
+                        </ul>
+                        <p class="mt-3 italic">Clave: los puntos [componente] se obtienen al resolver desafíos [mecánica], lo que genera sensación de progreso [dinámica].</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">El Alma de la Aventura: La Narrativa y el Storytelling</h3>
+                <p>Un sistema de puntos sin historia es solo una hoja de cálculo.</p>
+                <p class="mt-3">La narrativa es el hilo conductor que envuelve cualquier contenido educativo en un proceso excitante y significativo. Da sentido a cada misión y propósito a la aventura.</p>
+                <p class="mt-3"><strong>¿Por qué es fundamental?</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li><strong>Aumenta la inmersión:</strong> hace que los retos formen parte de algo mayor.</li>
+                    <li><strong>Genera conexión emocional:</strong> transmite emociones y empatía.</li>
+                    <li><strong>Sitúa al estudiante como protagonista:</strong> lo convierte en héroe y no en espectador.</li>
+                </ul>
+                <p class="mt-3"><strong>¿Cómo diseñarla?</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li>Que sea atractiva y cercana a los intereses del alumnado.</li>
+                    <li>Usar múltiples medios (video, texto, imágenes, audio).</li>
+                    <li>Mantener coherencia con las mecánicas del juego.</li>
+                </ul>
+                <p class="mt-3 italic">Sin narrativa poderosa, la gamificación puede quedarse en la superficie, apoyándose solo en motivadores externos.</p>
+            </article>
+
+            <article class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">El Mapa del Arquitecto: Fases del Diseño</h3>
+                <p>El diseño gamificado requiere planificación cíclica. Sus fases clave:</p>
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="p-4 border border-[#D1B78A] rounded-lg">
+                        <h4 class="font-bold text-lg">1. Definir objetivos y contenidos</h4>
+                        <p class="mt-2">Establecer aprendizajes y competencias. Basarse en currículo oficial → brújula del diseño.</p>
+                    </div>
+                    <div class="p-4 border border-[#D1B78A] rounded-lg">
+                        <h4 class="font-bold text-lg">2. Conocer a los jugadores</h4>
+                        <p class="mt-2">Identificar intereses, motivaciones y perfiles de jugador (exploradores, triunfadores, sociales, competitivos).</p>
+                    </div>
+                    <div class="p-4 border border-[#D1B78A] rounded-lg">
+                        <h4 class="font-bold text-lg">3. Diseñar y construir (prototipo)</h4>
+                        <p class="mt-2">Elegir dinámicas, mecánicas y componentes. Definir narrativa, estética y misiones. Crear un prototipo para prueba inicial.</p>
+                    </div>
+                    <div class="p-4 border border-[#D1B78A] rounded-lg">
+                        <h4 class="font-bold text-lg">4. Probar y evaluar la experiencia</h4>
+                        <p class="mt-2">Aplicar la experiencia y recoger evidencias. Usar playtests para corregir y mejorar.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mb-12 p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <h3 class="text-2xl zelda-font text-[#583E23] mb-3">La Brújula del Viaje: La Evaluación Formativa</h3>
+                <p>En gamificación, la evaluación no es un examen final. Es una brújula que guía al estudiante. Su meta es ser formativa, no punitiva.</p>
+                <p class="mt-3"><strong>Principios clave de la evaluación gamificada:</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li><strong>El error educa:</strong> se considera oportunidad, no castigo.</li>
+                    <li><strong>Retroalimentación inmediata:</strong> constante y clara, como en los juegos.</li>
+                    <li><strong>Proceso transparente:</strong> reglas, niveles y puntos claros desde el inicio.</li>
+                </ul>
+                <p class="mt-3"><strong>Instrumentos útiles:</strong></p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li><strong>Portfolio:</strong> documento que da coherencia y memoria al proceso.</li>
+                    <li><strong>Rúbricas y listas de control:</strong> guían y permiten autoevaluación consciente.</li>
+                    <li><strong>Autoevaluación y coevaluación:</strong> fomentan reflexión personal y colectiva.</li>
+                </ul>
+                <p class="mt-3 italic">La evaluación gamificada convierte la nota en un diálogo continuo entre aprendiz y guía.</p>
+            </article>
+        </section>
+
+        <section id="conclusion" class="scroll-target mb-16 fade-in-section">
+            <h2 class="text-3xl zelda-font text-[#A97142] mb-6 border-b-2 border-[#D1B78A] pb-2">Conclusión: De la Idea a la Experiencia</h2>
+            <div class="p-6 border-2 border-[#A97142] rounded-lg bg-[#fdf6e3]/30">
+                <p>Diseñar y evaluar experiencias gamificadas exige creatividad, planificación y empatía pedagógica.</p>
+                <p class="mt-3">El <strong>Diseño</strong> va de lo abstracto (dinámicas) a lo concreto (componentes), siempre guiado por una narrativa sólida.</p>
+                <p class="mt-3">La <strong>Evaluación</strong> es formativa, basada en feedback constante y reflexión, más que en notas finales.</p>
+                <p class="mt-3">Al dominar ambos aspectos, no solo creamos actividades divertidas, sino verdaderas aventuras educativas:</p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li><strong>Inmersivas</strong></li>
+                    <li><strong>Significativas</strong></li>
+                    <li><strong>Transformadoras</strong></li>
+                </ul>
+                <p class="mt-3">Esto fue una probadita al diseño y la evaluación. En el último módulo tendrás un panorama más amplio al abordar la planeación y evaluación de una manera más profunda.</p>
             </div>
         </section>
 
